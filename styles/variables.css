@@ -1,0 +1,127 @@
+/* =========================
+   PRIMITIVES (raw values)
+   ========================= */
+:root {
+  /* Neutrals */
+  --neutral-100: #f3e9d2;
+  --neutral-200: #e6d8b5;
+  --neutral-300: #f0e4c8;
+  --neutral-400: #d8d1c4;
+  --neutral-500: #9a8f7a;
+  --neutral-600: #8a847a;
+  --neutral-700: #6a5f4b;
+  --neutral-800: #3a3a3a;
+  --neutral-850: #24232a;
+  --neutral-900: #1b1a1f;
+  --neutral-950: #0e0d12;
+
+  /* Gold */
+  --gold-300: #ffd76a;
+  --gold-400: #e6c85c;
+  --gold-500: #c9a85a;
+  --gold-600: #d6b36a;
+
+  /* Accents */
+  --blue-400: #6fb6ff;
+  --blue-500: #4a90e2;
+
+  --red-400: #ff6b6b;
+  --red-500: #d94a4a;
+
+  --green-400: #7ed98a;
+  --green-500: #5faf6a;
+
+  --teal-400: #4fd1c5;
+  --teal-500: #7bc6c6;
+
+  /* =========================
+     TYPOGRAPHY (theme-agnostic)
+     ========================= */
+  --font-display: "Cinzel", serif;
+  --font-body: "EB Garamond", serif;
+  --font-code: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Sizes */
+  --size-hero: 96px;
+  --size-section: 48px;
+  --size-subsection: 28px;
+  --size-body-lg: 20px;
+  --size-body-md: 18px;
+  --size-body-sm: 16px;
+
+  /* Line heights */
+  --line-tight: 1.1;
+  --line-normal: 1.25;
+  --line-body: 1.6;
+  --line-code: 1.45;
+
+  /* Spacing (optional but helpful) */
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+
+  /* Radius */
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+}
+
+/* =========================
+   LIGHT THEME (semantic roles)
+   ========================= */
+:root {
+  --surface-background: var(--neutral-100);
+  --surface-panel: var(--neutral-200);
+  --surface-elevated: var(--neutral-300);
+  --surface-border: rgba(27, 26, 31, 0.18);
+
+  --text-primary: var(--neutral-900);
+  --text-secondary: var(--neutral-700);
+  --text-muted: var(--neutral-500);
+  --text-inverse: var(--neutral-100);
+
+  --accent-interaction: var(--teal-500);
+  --accent-highlight: var(--gold-500);
+
+  --mana-red: var(--red-500);
+  --mana-blue: var(--blue-500);
+  --mana-green: var(--green-500);
+  --mana-white: var(--gold-400);
+  --mana-black: var(--neutral-800);
+
+  /* UI states */
+  --focus-ring: var(--accent-interaction);
+  --link: var(--accent-interaction);
+  --link-hover: var(--gold-500);
+}
+
+/* =========================
+   DARK THEME (semantic swap)
+   Apply by setting: <html data-theme="dark">
+   ========================= */
+[data-theme="dark"] {
+  --surface-background: var(--neutral-950);
+  --surface-panel: var(--neutral-900);
+  --surface-elevated: var(--neutral-850);
+  --surface-border: rgba(243, 233, 210, 0.18);
+
+  --text-primary: var(--neutral-100);
+  --text-secondary: rgba(243, 233, 210, 0.82);
+  --text-muted: rgba(243, 233, 210, 0.62);
+  --text-inverse: var(--neutral-950);
+
+  /* In dark mode, teal can feel neon—gold is nicer as the main “magic” */
+  --accent-interaction: var(--gold-400);
+  --accent-highlight: var(--gold-300);
+
+  /* Mana colors: use lighter variants where you have them */
+  --mana-red: var(--red-400);
+  --mana-blue: var(--blue-400);
+  --mana-green: var(--green-400);
+  --mana-white: var(--gold-300);
+  --mana-black: var(--neutral-400);
+
+  --focus-ring: var(--accent-highlight);
+  --link: var(--accent-highlight);
+  --link-hover: var(--teal-400);
+}

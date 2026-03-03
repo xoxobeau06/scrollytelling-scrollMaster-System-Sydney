@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lost in the Scroll • Scroll.Master System</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Courier+Prime:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/variables.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <button id="themeToggle" type="button" aria-label="Toggle theme">🌙</button>
+
+    <main id="main">
+      <!-- =========================
+           HERO (H1 only here)
+           ========================= -->
+      <section class="section section--hero" id="hero">
+        <div class="hero__overlay"></div>
+
+        <div class="hero__content">
+          <h1 class="hero__title">
+            SCROLL.MASTER<br />
+            <span class="hero__subtitle">System</span>
+          </h1>
+
+          <p class="hero__tagline">
+            A system where spells are written, named, and remembered.<br />
+            Inspired by strategic card games like Magic: The Gathering.
+          </p>
+
+          <a href="#first-spell" class="hero__cta">Scroll to Begin</a>
+        </div>
+      </section>
+
+      <!-- =========================
+           CHAPTER 1
+           ========================= -->
+      <section class="section section--chapter" id="first-spell">
+        <div class="container first-spell">
+          <div class="first-spell__left">
+            <div class="panel panel--story">
+              <h2 class="chapter-title">The First Spell</h2>
+
+              <p>
+                Every Scroll Master starts with a simple spell. For me, it was
+                <a class="inline-link" href="#">console.log()</a>. It didn’t change
+                the world. It just revealed it. Seeing my values printed out in
+                the console was the first moment the system felt visible instead
+                of mysterious.
+              </p>
+
+              <p>
+                Before that, code felt like guessing. After that, it felt like
+                observing. And observation is where control begins.
+              </p>
+            </div>
+
+            <div class="panel panel--code">
+              <pre class="codeblock"><code>console.log("The scroll opens.");
+
+→ The scroll opens</code></pre>
+            </div>
+          </div>
+
+          <div class="first-spell__right">
+            <img
+              class="spell-card"
+              src="assets/images/ChatGPT Image Feb 27, 2026, 10_02_45 PM.png"
+              alt="A glowing spell sigil on a fantasy card frame"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+           CHAPTER 2
+           ========================= -->
+      <section class="section section--chapter section--alt" id="naming-the-deck">
+        <div class="container grimoire">
+          <header class="grimoire__header">
+            <h2 class="grimoire__title">Naming Your Grimoire</h2>
+            <p class="grimoire__subtitle">
+              A Sigil Without Intention Holds No Power
+            </p>
+          </header>
+
+          <div class="grimoire__books">
+            <figure class="book">
+              <img
+                class="book__img"
+                src="assets/svg/book.svg"
+                alt="Open book explaining let (mutable) variables"
+              />
+            </figure>
+
+            <figure class="book">
+              <img
+                class="book__img"
+                src="assets/svg/book.svg"
+                alt="Open book explaining const (immutable) variables"
+              />
+            </figure>
+          </div>
+
+          <p class="grimoire__body">
+            A spell without a name is chaos. When I learned <code>let</code> and
+            <code>const</code>, I realized naming wasn’t cosmetic — it was
+            structure. Some values are meant to shift and evolve. Others are
+            meant to stay anchored. Understanding the difference made my code
+            calmer. Less frantic. More intentional. Naming something well meant
+            I could find it again later, like labeling a spellbook page so I
+            wouldn’t lose it.
+          </p>
+        </div>
+      </section>
+
+      <!-- =========================
+           CHAPTER 3
+           ========================= -->
+      <section class="section section--chapter" id="the-switch">
+        <div class="container fork">
+          <header class="fork__header">
+            <h2 class="fork__title">The Forked Path</h2>
+
+            <p class="fork__lede">
+              Some spells resolve immediately. Others require the right
+              conditions. This is
+              <span class="fork__highlight">conditional logic</span>, the path a
+              spell takes when invoked.
+            </p>
+
+            <button class="fork__cta" id="choosePathBtn" type="button">
+  Choose Path
+</button>
+          </header>
+
+          <div class="fork__grid">
+            <!-- WIZARD -->
+            <article class="fork-card fork-card--wizard">
+              <h3 class="fork-card__title">Wizard</h3>
+              <p class="fork-card__desc">
+                Wizards prepare before they act.<br />
+                They check conditions.<br />
+                They follow rules.
+              </p>
+
+              <pre class="fork-code"><code>let mana = 5;
+let requiredMana = 3;
+
+if (mana &gt;= requiredMana) {
+  castSpell("Arcane Insight");
+} else {
+  prepareMoreMana();
+}</code></pre>
+            </article>
+
+            <!-- SORCERER -->
+            <article class="fork-card fork-card--sorcerer">
+              <h3 class="fork-card__title">Sorcerer</h3>
+              <p class="fork-card__desc">
+                Sorcerers act from instinct.<br />
+                They react to what they feel in the moment.
+              </p>
+
+              <pre class="fork-code"><code>let emotion = "focused";
+
+if (emotion === "focused") {
+  unleashPower("Ember Surge");
+} else {
+  retreatAndRegather();
+}</code></pre>
+            </article>
+          </div>
+
+          <p class="fork__footer">
+            This is when the system stopped being static. An if statement felt
+            like setting rules for how the world responds. If this is true, do
+            this. Else, do something else. It sounds simple. But it was the
+            first time I understood that code isn’t just instructions. It’s
+            possibility. And possibility is where the magic lives.
+          </p>
+        </div>
+      </section>
+
+      <!-- =========================
+           CHAPTER 4
+           ========================= -->
+      <section class="section section--chapter section--alt" id="reacting">
+        <div class="container energy">
+          <header class="energy__header">
+            <h2 class="energy__title">Channeling Energy</h2>
+
+            <p class="energy__lede">
+              When a creature becomes tapped, something happens. The game checks
+              the action and resolves the effect. On the web, it works the same
+              way. When a user clicks, hovers, or presses a key, your code is
+              waiting. That waiting is an
+              <span class="energy__highlight">event listener</span>.
+            </p>
+          </header>
+
+          <div class="energy__panel">
+            <div class="energy__left">
+              <p class="energy__prompt">
+                <strong>Try it!</strong><br />
+                Click the card to tap it!
+              </p>
+
+              <button
+                class="tap-card"
+                id="tapCard"
+                type="button"
+                aria-pressed="false"
+              >
+                <img
+                  src="assets/images/ChatGPT Image Feb 27, 2026, 10_02_45 PM.png"
+                  alt="A spell card. Click to tap it."
+                />
+              </button>
+            </div>
+
+            <div class="energy__right">
+              <div class="energy__codeWrap">
+                <pre class="energy__code"><code>// Event listener metaphor
+
+card.addEventListener("click", () => {
+  card.tap();
+});
+
+// Current state: <span id="tapState">untapped</span>
+
+// After click
+// Current state: tapped</code></pre>
+              </div>
+
+              <p class="energy__body">
+                Before events, everything just… ran. With event listeners, the
+                system started waiting. Listening. Reacting. When a user clicks,
+                something changes. That felt powerful, not because it was
+                complicated, but because it meant the interface could respond.
+                It wasn’t just a script anymore. It was interaction.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+           CHAPTER 5
+           ========================= -->
+      <section class="section section--chapter" id="the-system">
+        <div class="container schools">
+          <header class="schools__header">
+            <h2 class="schools__title">The Five Schools</h2>
+
+            <div class="schools__poem">
+              <p>In Scroll Master, each school has an identity.</p>
+              <p>One represents structure.</p>
+              <p>One represents growth.</p>
+              <p>One represents knowledge.</p>
+              <p>One represents impulse.</p>
+              <p>One represents ambition.</p>
+            </div>
+
+            <p class="schools__body">
+              No one debates their meaning mid-game. The system works because
+              everyone agrees on what those colors stand for. Design tokens work
+              the same way. When I stopped scattering hex codes everywhere and
+              defined variables instead, I wasn’t just styling. I was creating a
+              language. And language makes systems scalable.
+            </p>
+
+            <!-- ANIMATION TARGET (optional):
+                 You can animate the title/poem/body on scroll-in with GSAP.
+                 Example targets: .schools__title, .schools__poem p, .schools__body -->
+            <!-- PUT GSAP SCROLL ENTRANCE FOR HEADER TEXT IN main.js (ScrollTrigger) -->
+          </header>
+
+          <div class="schools__grid" aria-label="The five schools">
+            <!-- WHITE — Structure -->
+            <figure class="school school--white">
+              <div class="school__icon" aria-hidden="true">
+                <svg
+                  class="school__glyph"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"
+                  ></path>
+                </svg>
+              </div>
+
+              <figcaption class="school__label">
+                <span class="school__name">White</span>
+                <span class="school__token">--color-structure</span>
+              </figcaption>
+            </figure>
+
+            <!-- GREEN — Growth -->
+            <figure class="school school--green">
+              <div class="school__icon" aria-hidden="true">
+                <svg
+                  class="school__glyph"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M198.1,62.59a76,76,0,0,0-140.2,0A71.71,71.71,0,0,0,16,127.8C15.9,166,48,199,86.14,200A72.09,72.09,0,0,0,120,192.47V232a8,8,0,0,0,16,0V192.47A72.17,72.17,0,0,0,168,200l1.82,0C208,199,240.11,166,240,127.8A71.71,71.71,0,0,0,198.1,62.59ZM169.45,184a56.08,56.08,0,0,1-33.45-10v-41l43.58-21.78a8,8,0,1,0-7.16-14.32L136,115.06V88a8,8,0,0,0-16,0v51.06L83.58,120.84a8,8,0,1,0-7.16,14.32L120,156.94v17a56,56,0,0,1-33.45,10C56.9,183.23,31.92,157.52,32,127.84A55.77,55.77,0,0,1,67.11,76a8,8,0,0,0,4.53-4.67,60,60,0,0,1,112.72,0A8,8,0,0,0,188.89,76,55.79,55.79,0,0,1,224,127.84C224.08,157.52,199.1,183.23,169.45,184Z"
+                  ></path>
+                </svg>
+              </div>
+
+              <figcaption class="school__label">
+                <span class="school__name">Green</span>
+                <span class="school__token">--color-growth</span>
+              </figcaption>
+            </figure>
+
+            <!-- BLUE — Knowledge -->
+            <figure class="school school--blue">
+              <div class="school__icon" aria-hidden="true">
+                <svg
+                  class="school__glyph"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"
+                  ></path>
+                </svg>
+              </div>
+
+              <figcaption class="school__label">
+                <span class="school__name">Blue</span>
+                <span class="school__token">--color-knowledge</span>
+              </figcaption>
+            </figure>
+
+            <!-- RED — Impulse -->
+            <figure class="school school--red">
+              <div class="school__icon" aria-hidden="true">
+                <svg
+                  class="school__glyph"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M183.89,153.34a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68ZM216,144a88,88,0,0,1-176,0c0-27.92,11-56.47,32.66-84.85a8,8,0,0,1,11.93-.89l24.12,23.41,22-60.41a8,8,0,0,1,12.63-3.41C165.21,36,216,84.55,216,144Zm-16,0c0-46.09-35.79-85.92-58.21-106.33L119.52,98.74a8,8,0,0,1-13.09,3L80.06,76.16C64.09,99.21,56,122,56,144a72,72,0,0,0,144,0Z"
+                  ></path>
+                </svg>
+              </div>
+
+              <figcaption class="school__label">
+                <span class="school__name">Red</span>
+                <span class="school__token">--color-impulse</span>
+              </figcaption>
+            </figure>
+
+            <!-- BLACK — Ambition -->
+            <figure class="school school--black">
+              <div class="school__icon" aria-hidden="true">
+                <svg
+                  class="school__glyph"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M92,104a28,28,0,1,0,28,28A28,28,0,0,0,92,104Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,92,144Zm72-40a28,28,0,1,0,28,28A28,28,0,0,0,164,104Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,164,144ZM128,16C70.65,16,24,60.86,24,116c0,34.1,18.27,66,48,84.28V216a16,16,0,0,0,16,16h80a16,16,0,0,0,16-16V200.28C213.73,182,232,150.1,232,116,232,60.86,185.35,16,128,16Zm44.12,172.69a8,8,0,0,0-4.12,7V216H152V192a8,8,0,0,0-16,0v24H120V192a8,8,0,0,0-16,0v24H88V195.69a8,8,0,0,0-4.12-7C56.81,173.69,40,145.84,40,116c0-46.32,39.48-84,88-84s88,37.68,88,84C216,145.83,199.19,173.69,172.12,188.69Z"
+                  ></path>
+                </svg>
+              </div>
+
+              <figcaption class="school__label">
+                <span class="school__name">Black</span>
+                <span class="school__token">--color-ambition</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+           CHAPTER 6
+           ========================= -->
+      <section class="section section--chapter section--alt" id="local-storage">
+        <div class="container archive">
+          <header class="archive__header">
+            <h2 class="archive__title">The Archive Remembers</h2>
+          </header>
+
+          <div class="archive__grid">
+            <!-- LEFT: YOUR DECK -->
+            <section class="archive__col">
+              <h3 class="archive__colTitle">Your Deck</h3>
+
+              <div class="deck" aria-label="Your deck">
+                <button class="scroll-card" type="button" data-scroll="Revelation">
+                  <span class="scroll-card__text">
+                    <span class="scroll-card__name">Revelation</span>
+                    <span class="scroll-card__meta">Scroll I</span>
+                  </span>
+                  <span class="scroll-card__icon" aria-hidden="true">💾</span>
+                </button>
+
+                <button class="scroll-card" type="button" data-scroll="Ward">
+                  <span class="scroll-card__text">
+                    <span class="scroll-card__name">Ward</span>
+                    <span class="scroll-card__meta">Scroll II</span>
+                  </span>
+                  <span class="scroll-card__icon" aria-hidden="true">💾</span>
+                </button>
+
+                <button class="scroll-card" type="button" data-scroll="Transmute">
+                  <span class="scroll-card__text">
+                    <span class="scroll-card__name">Transmute</span>
+                    <span class="scroll-card__meta">Scroll III</span>
+                  </span>
+                  <span class="scroll-card__icon" aria-hidden="true">💾</span>
+                </button>
+
+                <button class="scroll-card" type="button" data-scroll="Binding">
+                  <span class="scroll-card__text">
+                    <span class="scroll-card__name">Binding</span>
+                    <span class="scroll-card__meta">Scroll IV</span>
+                  </span>
+                  <span class="scroll-card__icon" aria-hidden="true">💾</span>
+                </button>
+              </div>
+
+              <pre class="archive__code"><code>// Preserve in Archive
+localStorage.setItem(
+  "archive",
+  JSON.stringify(scrolls)
+);</code></pre>
+            </section>
+
+            <!-- RIGHT: YOUR MEMORY -->
+            <section class="archive__col">
+              <h3 class="archive__colTitle">Your Memory</h3>
+
+              <div class="memory">
+                <div class="memory__list" id="memoryList" aria-label="Saved scrolls">
+                  <!-- JS will populate -->
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="archive__footer">
+            <button class="archive__clear" id="clearMemory" type="button">
+              Clear
+            </button>
+
+            <p class="archive__body">
+              At first, every refresh wiped the slate clean. That felt temporary,
+              like nothing really stuck. Then I learned about
+              <code>localStorage</code>. Suddenly the system could remember—theme
+              choices, preferences, state. It felt less like casting a temporary
+              spell and more like writing something permanent into the archive.
+              That changed how I saw what a website could be.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+           CLOSING
+           ========================= -->
+      <section class="section section--chapter section--final" id="closing">
+        <div class="container closing">
+          <div class="closing__fan" aria-hidden="true">
+            <span class="fan-card fan-card--1"></span>
+            <span class="fan-card fan-card--2"></span>
+            <span class="fan-card fan-card--3"></span>
+            <span class="fan-card fan-card--4"></span>
+            <span class="fan-card fan-card--5"></span>
+          </div>
+
+          <div class="closing__panel">
+            <h2 class="closing__title">Reset the Field</h2>
+
+            <div class="closing__text">
+              <p>At the beginning, everything felt mysterious.</p>
+              <p>Now it feels navigable.</p>
+              <p>
+                Not because the magic disappeared,<br />
+                but because I understand the structure behind it.
+              </p>
+              <p>That’s what Scroll Master became:</p>
+              <p><strong>A way to turn confusion into language.</strong></p>
+              <p>And language into control.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Scripts -->
+    <!-- GSAP (Core) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <!-- ScrollTrigger plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

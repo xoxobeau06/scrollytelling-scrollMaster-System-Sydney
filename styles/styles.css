@@ -1,0 +1,1271 @@
+/* =========================================================
+   styles.css
+   Lost in the Scroll — Scroll.Master System
+
+   TABLE OF CONTENTS
+   01) Base / Layout
+   02) Accessibility (Skip Link)
+   03) Section Rhythm
+   04) Typography Helpers
+   05) Shared Components
+       - Theme Toggle
+       - Button System
+       - Footer
+   06) HERO
+   07) CHAPTER 1 — The First Spell
+   08) CHAPTER 2 — Naming Your Grimoire
+   09) CHAPTER 3 — The Forked Path
+   10) CHAPTER 4 — Channeling Energy
+   11) CHAPTER 5 — The Five Schools
+   12) CHAPTER 6 — The Archive Remembers
+   13) CLOSING — Reset the Field
+   ========================================================= */
+
+
+/* =========================================================
+   01) Base / Layout
+   ========================================================= */
+
+/* Base reset-ish */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--surface-background);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--size-body-md);
+  line-height: var(--line-body);
+}
+
+/* Container */
+.container {
+  width: min(72rem, 100%);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+
+/* =========================================================
+   02) Accessibility (Skip Link)
+   ========================================================= */
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: var(--space-md);
+}
+
+.skip-link:focus {
+  left: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--surface-elevated);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+}
+
+
+/* =========================================================
+   03) Section Rhythm
+   ========================================================= */
+
+.section {
+  min-height: 100svh;
+  padding: var(--space-xl) 0;
+  display: flex;
+  align-items: center;
+}
+
+.section--alt {
+  background: var(--surface-panel);
+}
+
+.section--final {
+  min-height: auto;
+  padding-bottom: calc(var(--space-xl) * 1.5);
+}
+
+
+/* =========================================================
+   04) Typography Helpers
+   ========================================================= */
+
+.eyebrow {
+  margin: 0 0 var(--space-sm);
+  color: var(--text-muted);
+  font-family: var(--font-code);
+  font-size: var(--size-body-sm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.display {
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-display);
+  font-size: var(--size-hero);
+  line-height: var(--line-tight);
+}
+
+.headline {
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-display);
+  font-size: var(--size-section);
+  line-height: var(--line-normal);
+}
+
+.lede {
+  max-width: 60ch;
+  font-size: var(--size-body-lg);
+  color: var(--text-secondary);
+}
+
+.subhead {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--font-display);
+  font-size: var(--size-subsection);
+  line-height: var(--line-normal);
+}
+
+
+/* Cards */
+.card {
+  margin-top: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--surface-elevated);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+}
+
+
+/* Links + focus */
+a {
+  color: var(--link);
+  transition: color 0.2s ease;
+}
+
+a:hover { color: var(--link-hover); }
+
+a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+
+/* Mobile readability */
+@media (max-width: 720px) {
+  .display { font-size: 64px; } /* temporary; can token-ize later */
+  .headline { font-size: 36px; }
+  .section { padding: var(--space-lg) 0; }
+}
+
+
+/* =========================================================
+   05) Shared Components
+   ========================================================= */
+
+/* ======================
+   STICKY THEME TOGGLE
+   ====================== */
+
+#themeToggle {
+  position: fixed;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  z-index: 1000;
+
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+
+  background: var(--surface-elevated);
+  border: 2px solid var(--surface-border);
+
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+
+  font-size: 24px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#themeToggle:hover {
+  background: var(--accent-highlight);
+  border-color: var(--accent-highlight);
+  transform: scale(1.05);
+}
+
+#themeToggle:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+/* Mobile: smaller and adjusted position */
+@media (max-width: 720px) {
+  #themeToggle {
+    width: 48px;
+    height: 48px;
+    top: var(--space-md);
+    right: var(--space-md);
+    font-size: 20px;
+  }
+}
+
+
+/* ======================
+   BUTTON SYSTEM
+   ====================== */
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: var(--size-body-md);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  background: transparent;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+/* Ghost button (transparent with border) */
+.btn--ghost {
+  border: 2px solid var(--text-muted);
+  color: var(--text-primary);
+  background: transparent;
+}
+
+.btn--ghost:hover {
+  border-color: var(--accent-highlight);
+  color: var(--accent-highlight);
+}
+
+/* Outline button */
+.btn-outline,
+.btn--outline {
+  border: 2px solid currentColor;
+  background: transparent;
+}
+
+.btn-outline:hover,
+.btn--outline:hover {
+  background: currentColor;
+  color: var(--text-inverse);
+}
+
+/* Solid button */
+.btn-solid,
+.btn--solid {
+  background: var(--accent-highlight);
+  color: var(--text-inverse);
+  border: 2px solid var(--accent-highlight);
+}
+
+.btn-solid:hover,
+.btn--solid:hover {
+  background: transparent;
+  color: var(--accent-highlight);
+}
+
+/* Gold variant */
+.btn-gold,
+.btn--gold {
+  color: var(--accent-highlight);
+  border-color: var(--accent-highlight);
+}
+
+.btn-gold:hover,
+.btn--gold:hover {
+  background: var(--accent-highlight);
+  color: var(--text-inverse);
+}
+
+
+/* ======================
+   SITE FOOTER
+   ====================== */
+
+.site-footer {
+  background: var(--surface-panel);
+  border-top: 1px solid var(--surface-border);
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+
+.micro {
+  margin: 0;
+  font-family: var(--font-code);
+  font-size: var(--size-body-sm);
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   06) HERO CINEMATIC STYLE
+   ========================================================= */
+
+.section--hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background-image: url("../assets/images/mana.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Soft parchment wash overlay */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(243, 233, 210, 0.85),
+      rgba(123, 198, 198, 0.25)
+    );
+
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* Content wrapper */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: var(--space-xl);
+}
+
+/* Main title */
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 8vw, var(--size-hero));
+  line-height: 1.05;
+  margin: 0 0 var(--space-lg);
+  color: var(--text-primary);
+}
+
+.hero__subtitle {
+  display: block;
+  margin-top: var(--space-sm);
+}
+
+/* Tagline */
+.hero__tagline {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--size-body-lg);
+  color: var(--text-secondary);
+  max-width: 60ch;
+  margin: 0 auto var(--space-xl);
+  line-height: var(--line-body);
+}
+
+/* Gold outline button */
+.hero__cta {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  border: 2px solid var(--accent-highlight);
+  color: var(--accent-highlight);
+  font-family: var(--font-body);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.hero__cta:hover {
+  background: var(--accent-highlight);
+  color: var(--text-inverse);
+}
+
+/* Dark mode adjustment */
+[data-theme="dark"] .hero__overlay {
+  background:
+    linear-gradient(
+      to right,
+      rgba(14, 13, 18, 0.8),
+      rgba(36, 35, 42, 0.7)
+    );
+}
+
+
+/* =========================================================
+   07) CHAPTER 1 — THE FIRST SPELL
+   ========================================================= */
+
+.first-spell {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+/* Left column stacks panels */
+.first-spell__left {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+/* Panel base (re-usable) */
+.panel {
+  background: var(--surface-panel);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+/* Chapter title styling */
+.chapter-title {
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-display);
+  font-size: var(--size-section);
+  line-height: var(--line-normal);
+  color: var(--mana-blue); /* matches your Figma’s blue title */
+}
+
+/* Inline link (console.log()) */
+.inline-link {
+  color: var(--mana-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.inline-link:hover {
+  color: var(--accent-highlight);
+}
+
+/* Code panel */
+.panel--code {
+  background: var(--surface-panel);
+}
+
+/* Code block styling */
+.codeblock {
+  margin: 0;
+  font-family: var(--font-code);
+  font-size: var(--size-body-md);
+  line-height: var(--line-code);
+  color: var(--text-primary);
+  white-space: pre-wrap; /* keeps it from overflowing on mobile */
+}
+
+/* Make the first line (console.log...) pop like your blue */
+.codeblock code {
+  color: var(--mana-blue);
+}
+
+/* Spell card image */
+.spell-card {
+  width: min(520px, 100%);
+  height: auto;
+  display: block;
+  margin-inline: auto;
+}
+
+/* Mobile: stack */
+@media (max-width: 900px) {
+  .first-spell {
+    grid-template-columns: 1fr;
+  }
+
+  .first-spell__right {
+    order: -1; /* card on top on mobile (optional) */
+  }
+
+  .chapter-title {
+    font-size: clamp(32px, 5vw, var(--size-section));
+  }
+}
+
+
+/* =========================================================
+   08) CHAPTER 2 — NAMING YOUR GRIMOIRE
+   ========================================================= */
+
+.grimoire {
+  text-align: center;
+}
+
+.grimoire__header {
+  margin-bottom: var(--space-xl);
+}
+
+.grimoire__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--size-section);
+  line-height: var(--line-normal);
+  color: var(--accent-highlight);
+}
+
+.grimoire__subtitle {
+  margin: var(--space-sm) 0 0;
+  font-family: var(--font-body);
+  font-size: var(--size-body-lg);
+  color: var(--text-secondary);
+}
+
+.grimoire__books {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+  justify-items: center;
+  margin: var(--space-xl) 0;
+}
+
+.book {
+  margin: 0;
+}
+
+.book__img {
+  width: min(520px, 100%);
+  height: auto;
+  display: block;
+}
+
+.grimoire__body {
+  max-width: 75ch;
+  margin: 0 auto;
+  color: var(--text-secondary);
+}
+
+/* Inline code matches your “system” vibe */
+.grimoire__body code {
+  font-family: var(--font-code);
+  font-size: 0.95em;
+  padding: 0.1em 0.35em;
+  border-radius: 8px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--surface-border);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .grimoire__books {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   09) CHAPTER 3 — THE FORKED PATH
+   ========================================================= */
+
+.fork {
+  text-align: center;
+}
+
+.fork__header {
+  max-width: 70ch;
+  margin: 0 auto var(--space-xl);
+}
+
+.fork__title {
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-display);
+  font-size: var(--size-section);
+  line-height: var(--line-normal);
+  color: var(--mana-red);
+}
+
+.fork__lede {
+  margin: 0 auto var(--space-lg);
+  color: var(--text-secondary);
+  font-size: var(--size-body-lg);
+}
+
+.fork__highlight {
+  color: var(--mana-red);
+  font-weight: 700;
+}
+
+/* Outline button */
+.fork__cta {
+  display: inline-block;
+  padding: 0.8rem 2.2rem;
+  border-radius: 999px;
+  border: 2px solid var(--mana-red);
+  color: var(--mana-red);
+  text-decoration: none;
+  font-family: var(--font-body);
+  transition: all 0.2s ease;
+}
+
+.fork__cta:hover {
+  background: var(--mana-red);
+  color: var(--text-inverse);
+}
+
+/* Two cards */
+.fork__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+  margin: var(--space-xl) 0;
+}
+
+.fork-card {
+  background: var(--surface-panel);
+  border: 1px solid var(--mana-red);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.fork-card__title {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--font-display);
+  font-size: var(--size-subsection);
+  color: var(--mana-red);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fork-card__desc {
+  margin: 0 0 var(--space-lg);
+  color: var(--text-secondary);
+}
+
+/* Code panel inside */
+.fork-code {
+  margin: 0;
+  padding: var(--space-lg);
+  background: var(--surface-elevated);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0,0,0,0.08);
+  text-align: left;
+
+  font-family: var(--font-code);
+  font-size: var(--size-body-md);
+  line-height: var(--line-code);
+  white-space: pre-wrap;
+}
+
+/* Footer paragraph */
+.fork__footer {
+  max-width: 85ch;
+  margin: 0 auto;
+  color: var(--text-secondary);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .fork__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fork-card {
+    padding: var(--space-lg);
+  }
+}
+/* =========================================
+   FORK: match card sizes + selection styles
+   ========================================= */
+
+/* Make the grid stretch items to the same height */
+.fork__grid {
+  align-items: stretch; /* <- important */
+}
+
+/* Make each card a "layout container" that can stretch nicely */
+.fork-card {
+  height: 100%;                 /* equal height in the grid row */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Make the code area consistent so one card doesn't get taller */
+.fork-code {
+  flex: 1;                      /* lets code panel take remaining space */
+  min-height: 260px;            /* tweak if needed to match Figma */
+  display: block;
+}
+
+/* Optional: unify corner rounding + soften border feel (Figma-like) */
+.fork-card {
+  border-width: 2px;
+}
+
+/* ---------- Selected state (base) ---------- */
+.fork-card.is-selected {
+  border-width: 3px;
+}
+
+/* Wizard selected: soft cool tint + subtle border pop */
+.fork-card--wizard.is-selected {
+  background: rgba(74, 144, 226, 0.10); /* soft blue tint */
+  border-color: var(--mana-blue);
+}
+
+/* Sorcerer selected: soft warm tint + border pop */
+.fork-card--sorcerer.is-selected {
+  background: rgba(217, 74, 74, 0.10); /* soft red/pink tint */
+  border-color: var(--mana-red);
+}
+
+/* Optional: selected title emphasis */
+.fork-card.is-selected .fork-card__title {
+  transform: translateY(-1px);
+}
+
+/* Make cards feel clickable */
+.fork-card {
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.fork-card:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   10) CHAPTER 4 — CHANNELING ENERGY
+   ========================================================= */
+
+.energy {
+  text-align: center;
+}
+
+.energy__header {
+  max-width: 80ch;
+  margin: 0 auto var(--space-xl);
+}
+
+.energy__title {
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-display);
+  font-size: var(--size-section);
+  line-height: var(--line-normal);
+  color: var(--mana-green);
+}
+
+.energy__lede {
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: var(--size-body-lg);
+}
+
+.energy__highlight {
+  color: var(--mana-green);
+  font-weight: 700;
+}
+
+/* Big bordered panel */
+.energy__panel {
+  border: 2px solid var(--mana-green);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  background: var(--surface-panel);
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--space-xl);
+  align-items: center;
+
+  text-align: left;
+}
+
+/* Left side */
+.energy__prompt {
+  margin: 0 0 var(--space-md);
+  color: var(--text-secondary);
+}
+
+.tap-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.tap-card img {
+  width: min(360px, 100%);
+  height: auto;
+  display: block;
+  transition: transform 0.25s ease;
+  transform-origin: center;
+}
+
+/* tapped state */
+.tap-card.is-tapped img {
+  transform: rotate(-90deg);
+}
+
+.tap-card:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 6px;
+  border-radius: 12px;
+}
+
+/* Right side */
+.energy__codeWrap {
+  background: var(--surface-elevated);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.energy__code {
+  margin: 0;
+  font-family: var(--font-code);
+  font-size: var(--size-body-md);
+  line-height: var(--line-code);
+  white-space: pre-wrap;
+}
+
+.energy__body {
+  margin: var(--space-lg) 0 0;
+  color: var(--text-secondary);
+  max-width: 60ch;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .energy__panel {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .energy__body {
+    margin-inline: auto;
+  }
+}
+
+
+/* =========================================================
+   11) CHAPTER 5 — THE FIVE SCHOOLS
+   ========================================================= */
+
+.schools {
+  text-align: center;
+}
+
+/* Header spacing feels roomy in your screenshot */
+.schools__header {
+  max-width: 90ch;
+  margin: 0 auto var(--space-xl);
+}
+
+.schools__title {
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-display);
+  font-size: var(--size-section);
+  line-height: var(--line-normal);
+  color: var(--accent-highlight);
+}
+
+.schools__poem {
+  margin: 0 auto var(--space-lg);
+  color: var(--text-secondary);
+}
+
+.schools__poem p { margin: 0; }
+.schools__poem p + p { margin-top: 0.35rem; }
+
+.schools__body {
+  max-width: 95ch;
+  margin: var(--space-lg) auto 0;
+  color: var(--text-secondary);
+}
+
+/* Icon row: wider spacing like your screenshot */
+.schools__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  column-gap: clamp(2rem, 4vw, 5rem);
+  row-gap: var(--space-xl);
+  align-items: start;
+  justify-items: center;
+  margin-top: var(--space-xl);
+}
+
+.school {
+  margin: 0;
+}
+
+/* Big clean circles (no border) */
+.school__icon {
+  width: 156px;            /* closer to your Figma */
+  height: 156px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+
+  border: none;            /* remove ring */
+  box-shadow: none;        /* screenshot looks flat */
+}
+
+/* IMPORTANT:
+   Make glyph styling work for BOTH:
+   - span icons (temporary)
+   - inline SVG icons (recommended for GSAP)
+*/
+.school__glyph {
+  /* If it's an SVG, this will size it */
+  width: 92px;
+  height: 92px;
+
+  /* If it's a span, these still apply */
+  display: block;
+
+  /* Make icon dark like your screenshot */
+  color: rgba(0, 0, 0, 0.85);
+  opacity: 1;
+
+  /* Helpful for GSAP transforms */
+  transform-origin: 50% 50%;
+}
+
+/* If you're still using spans, keep them from looking tiny */
+.school__glyph:not(svg) {
+  font-family: var(--font-code);
+  font-size: 56px;
+  line-height: 1;
+}
+
+/* Inline school icons are fill-based SVG paths */
+.school__glyph svg,
+svg.school__glyph {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* Labels: serif/display feel */
+.school__label {
+  margin-top: 18px;        /* matches screenshot spacing */
+  display: grid;
+  gap: 6px;
+}
+
+.school__name {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  color: var(--text-primary);
+}
+
+.school__token {
+  font-family: var(--font-display); /* screenshot feels serif, not code */
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+/* Circle fills (from your tokens) */
+.school--white .school__icon { background: var(--mana-white); }
+.school--green .school__icon { background: var(--mana-green); }
+.school--blue  .school__icon { background: var(--mana-blue); }
+.school--red   .school__icon { background: var(--mana-red); }
+.school--black .school__icon { background: var(--mana-black); }
+
+/* Black circle: icon should still be dark but readable
+   (your screenshot shows dark-on-dark, not white) */
+.school--black .school__glyph {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .schools__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 520px) {
+  .schools__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   12) CHAPTER 6 — THE ARCHIVE REMEMBERS (localStorage)
+   ========================================================= */
+
+.archive {
+  text-align: center;
+}
+
+.archive__title {
+  margin: 0 0 var(--space-xl);
+  font-family: var(--font-display);
+  font-size: var(--size-section);
+  line-height: var(--line-normal);
+  color: var(--accent-highlight);
+}
+
+.archive__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.archive__colTitle {
+  margin: 0 0 var(--space-lg);
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 44px);
+  color: var(--text-primary);
+}
+
+.deck {
+  display: grid;
+  gap: var(--space-md);
+}
+
+/* Scroll cards */
+.scroll-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  text-align: left;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-lg);
+
+  background: var(--surface-background);
+  border: 2px solid var(--accent-highlight);
+
+  cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.2s ease;
+}
+
+.scroll-card:hover {
+  transform: translateY(-1px);
+  opacity: 0.96;
+}
+
+.scroll-card:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+.scroll-card__name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.scroll-card__meta {
+  display: block;
+  font-family: var(--font-code);
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
+}
+
+.scroll-card__icon {
+  font-size: 22px;
+  opacity: 0.85;
+}
+
+/* Code snippet panel */
+.archive__code {
+  margin: var(--space-lg) 0 0;
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  font-family: var(--font-code);
+  font-size: var(--size-body-md);
+  line-height: var(--line-code);
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+/* Memory panel */
+.memory {
+  background: var(--surface-panel);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  min-height: 420px;
+}
+
+.memory__list {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.memory-item {
+  background: var(--surface-background);
+  border: 2px solid var(--accent-highlight);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  text-align: left;
+}
+
+.memory-item__name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.memory-item__meta {
+  font-family: var(--font-code);
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
+}
+
+/* Footer */
+.archive__footer {
+  margin-top: var(--space-xl);
+  display: grid;
+  justify-items: center;
+  gap: var(--space-lg);
+}
+
+.archive__clear {
+  padding: 0.75rem 2rem;
+  border-radius: 999px;
+  border: 2px solid var(--mana-red);
+  background: transparent;
+  color: var(--mana-red);
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.archive__clear:hover {
+  background: var(--mana-red);
+  color: var(--text-inverse);
+}
+
+.archive__body {
+  max-width: 80ch;
+  color: var(--text-secondary);
+}
+
+.archive__body code {
+  font-family: var(--font-code);
+  background: var(--surface-elevated);
+  padding: 0.12em 0.35em;
+  border-radius: 8px;
+  border: 1px solid var(--surface-border);
+}
+
+/* Mobile */
+@media (max-width: 950px) {
+  .archive__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .memory {
+    min-height: auto;
+  }
+}
+
+
+/* =========================================================
+   13) CLOSING — RESET THE FIELD
+   ========================================================= */
+
+.closing {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding-top: calc(var(--space-xl) * 1.25);
+  padding-bottom: calc(var(--space-xl) * 1.25);
+}
+
+/* Fan of cards behind */
+.closing__fan {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-55%);
+  width: min(820px, 92%);
+  height: 360px;
+  pointer-events: none;
+}
+
+.fan-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 220px;
+  height: 300px;
+  border-radius: 18px;
+  border: 6px solid var(--accent-highlight);
+  background: var(--surface-elevated);
+  transform-origin: bottom center;
+  transform: translate(-50%, -50%);
+  opacity: 0.95;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Rotate each card */
+.fan-card--1 { transform: translate(-50%, -50%) rotate(-22deg); }
+.fan-card--2 { transform: translate(-50%, -50%) rotate(-10deg); }
+.fan-card--3 { transform: translate(-50%, -50%) rotate(0deg); }
+.fan-card--4 { transform: translate(-50%, -50%) rotate(10deg); }
+.fan-card--5 { transform: translate(-50%, -50%) rotate(22deg); }
+
+/* The main message panel */
+.closing__panel {
+  position: relative;
+  z-index: 2;
+  width: min(760px, 100%);
+  background: var(--surface-panel);
+  border: 2px solid var(--accent-highlight);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.closing__title {
+  margin: 0 0 var(--space-lg);
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 56px);
+  color: var(--text-primary);
+}
+
+.closing__text {
+  color: var(--text-secondary);
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+.closing__text p {
+  margin: 0;
+}
+
+.closing__text p + p {
+  margin-top: var(--space-md);
+}
+
+.closing__text strong {
+  color: var(--text-primary);
+}
+
+/* Mobile adjustments */
+@media (max-width: 720px) {
+  .closing__fan {
+    height: 260px;
+    transform: translateY(-65%);
+  }
+
+  .fan-card {
+    width: 160px;
+    height: 220px;
+    border-width: 5px;
+  }
+
+  .closing__panel {
+    padding: var(--space-lg);
+  }
+}

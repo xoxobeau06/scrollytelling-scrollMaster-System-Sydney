@@ -1,0 +1,63 @@
+<svg width="720" height="500" viewBox="0 0 720 500" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Open spellbook">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="20" flood-opacity="0.18"></feDropShadow>
+    </filter>
+
+    <linearGradient id="pageGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3E9D2"></stop>
+      <stop offset="1" stop-color="#E6D8B5"></stop>
+    </linearGradient>
+
+    <linearGradient id="coverGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#24232A" stop-opacity="0.9"></stop>
+      <stop offset="1" stop-color="#1B1A1F" stop-opacity="1"></stop>
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#shadow)">
+
+    <!-- LEFT COVER (heavier bottom) -->
+    <path id="cover-left" d="M110 120
+         C170 80, 280 70, 350 100
+         L350 410
+         C270 375, 175 390, 110 440
+         C90 452, 70 438, 70 410
+         L70 150
+         C70 130, 95 112, 110 120Z" fill="url(#coverGrad)" stroke="#C9A85A" stroke-width="4" stroke-linejoin="round"></path>
+
+    <!-- RIGHT COVER (heavier bottom) -->
+    <path id="cover-right" d="M610 120
+         C550 80, 440 70, 370 100
+         L370 410
+         C450 375, 545 390, 610 440
+         C630 452, 650 438, 650 410
+         L650 150
+         C650 130, 625 112, 610 120Z" fill="url(#coverGrad)" stroke="#C9A85A" stroke-width="4" stroke-linejoin="round"></path>
+
+    <!-- LEFT PAGE -->
+    <path d="M128 150
+         C185 115, 285 110, 350 135
+         L350 385
+         C285 360, 190 370, 128 410
+         C120 415, 110 408, 110 395
+         L110 165
+         C110 155, 120 145, 128 150Z" fill="url(#pageGrad)" stroke="#C9A85A" stroke-width="3"></path>
+
+    <!-- RIGHT PAGE -->
+    <path d="M592 150
+         C535 115, 435 110, 370 135
+         L370 385
+         C435 360, 530 370, 592 410
+         C600 415, 610 408, 610 395
+         L610 165
+         C610 155, 600 145, 592 150Z" fill="url(#pageGrad)" stroke="#C9A85A" stroke-width="3"></path>
+
+    <!-- SPINE -->
+    <path d="M350 105
+         C360 98, 370 98, 380 105
+         L380 425
+         C370 438, 360 438, 350 425Z" fill="#1B1A1F" stroke="#C9A85A" stroke-width="3" opacity="0.9"></path>
+
+  </g>
+</svg>
