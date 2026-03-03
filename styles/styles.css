@@ -528,6 +528,9 @@ a:focus-visible {
 
 .book {
   margin: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
 }
 
 .book__img {
@@ -551,11 +554,64 @@ a:focus-visible {
   background: var(--surface-elevated);
   border: 1px solid var(--surface-border);
 }
+/* Content overlay on top of the SVG */
+.book__content {
+  position: absolute;
+  inset: 0;
+}
 
+.book__text {
+  position: absolute;
+  left: 19.8%;
+  top: 35.5%;
+  width: 25.2%;
+  height: 35%;
+
+  font-family: var(--font-body);
+  font-size: clamp(0.76rem, 0.96vw, 0.94rem);
+  line-height: 1.34;
+  color: var(--text-primary);
+
+  overflow: hidden;
+}
+
+.book__text p {
+  margin: 0;
+}
+
+.book__code {
+  position: absolute;
+  left: 54.7%;
+  top: 35.5%;
+  width: 25.2%;
+  height: 35%;
+
+  margin: 0;
+  font-family: var(--font-code);
+  font-size: clamp(0.66rem, 0.86vw, 0.82rem);
+  line-height: 1.26;
+  color: var(--text-primary);
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow: hidden;
+}
+
+.book__code code {
+  display: block;
+  margin: 0;
+  white-space: inherit;
+}
 /* Mobile */
 @media (max-width: 900px) {
   .grimoire__books {
     grid-template-columns: 1fr;
+  }
+
+  .book__text,
+  .book__code {
+    top: 34.8%;
+    height: 36%;
   }
 }
 
@@ -998,6 +1054,11 @@ svg.school__glyph {
    12) CHAPTER 6 — THE ARCHIVE REMEMBERS (localStorage)
    ========================================================= */
 
+/* ======================
+   SECTION: THE ARCHIVE REMEMBERS (localStorage)
+   Match Figma layout
+   ====================== */
+
 .archive {
   text-align: center;
 }
@@ -1010,26 +1071,36 @@ svg.school__glyph {
   color: var(--accent-highlight);
 }
 
+/* Center the whole two-column region like Figma */
 .archive__grid {
+  width: min(980px, 100%);
+  margin: 0 auto;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl);
+  gap: 4rem;
   align-items: start;
 }
 
+/* Column headings */
 .archive__colTitle {
-  margin: 0 0 var(--space-lg);
+  margin: 0 0 1.25rem;
   font-family: var(--font-display);
-  font-size: clamp(28px, 3vw, 44px);
+  font-size: 44px;
+  line-height: 1.1;
   color: var(--text-primary);
 }
 
+/* Left column list should feel “card list” and not stretch too wide */
 .deck {
+  width: min(520px, 100%);
+  margin: 0 auto;
+
   display: grid;
-  gap: var(--space-md);
+  gap: 1.25rem;
 }
 
-/* Scroll cards */
+/* Scroll cards (Figma-ish) */
 .scroll-card {
   width: 100%;
   display: flex;
@@ -1037,10 +1108,10 @@ svg.school__glyph {
   justify-content: space-between;
 
   text-align: left;
-  padding: var(--space-md) var(--space-lg);
-  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.35rem;
+  border-radius: 18px;
 
-  background: var(--surface-background);
+  background: rgba(243, 233, 210, 0.55); /* parchment-ish */
   border: 2px solid var(--accent-highlight);
 
   cursor: pointer;
@@ -1049,89 +1120,112 @@ svg.school__glyph {
 
 .scroll-card:hover {
   transform: translateY(-1px);
-  opacity: 0.96;
-}
-
-.scroll-card:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 4px;
+  opacity: 0.98;
 }
 
 .scroll-card__name {
   display: block;
   font-family: var(--font-display);
   font-size: 26px;
-  line-height: 1.1;
+  line-height: 1.05;
 }
 
 .scroll-card__meta {
   display: block;
   font-family: var(--font-code);
+  font-size: 14px;
   color: var(--text-secondary);
-  margin-top: 0.15rem;
+  margin-top: 0.25rem;
 }
 
+/* tiny save icon */
 .scroll-card__icon {
-  font-size: 22px;
-  opacity: 0.85;
+  font-size: 18px;
+  opacity: 0.7;
 }
 
-/* Code snippet panel */
+/* Code snippet under deck: NO hard border, just a soft panel like Figma */
 .archive__code {
-  margin: var(--space-lg) 0 0;
-  padding: var(--space-lg);
-  border-radius: var(--radius-lg);
-  background: var(--surface-panel);
+  width: min(520px, 100%);
+  margin: 1.75rem auto 0;
+
+  padding: 1.25rem 1.5rem;
+  border-radius: 18px;
+
+  background: rgba(214, 179, 106, 0.25); /* warm gold tint */
+  border: none;
+
   font-family: var(--font-code);
-  font-size: var(--size-body-md);
-  line-height: var(--line-code);
+  font-size: 16px;
+  line-height: 1.55;
   text-align: left;
   white-space: pre-wrap;
 }
 
-/* Memory panel */
+/* Memory panel: the big soft box on the right */
 .memory {
-  background: var(--surface-panel);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  min-height: 420px;
+  width: min(520px, 100%);
+  margin: 0 auto;
+
+  background: rgba(214, 179, 106, 0.22); /* warm tint like Figma */
+  border-radius: 22px;
+  padding: 1.5rem;
+  min-height: 360px;
 }
 
 .memory__list {
   display: grid;
-  gap: var(--space-md);
+  gap: 1.25rem;
+  align-content: start;
 }
 
+/* Empty state centered inside panel */
+.memory__list.is-empty {
+  height: 100%;
+  place-content: start center;
+}
+
+.memory__empty {
+  margin: 0;
+  font-family: var(--font-code);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Saved items inside Memory look like cards */
 .memory-item {
-  background: var(--surface-background);
+  background: rgba(243, 233, 210, 0.55);
   border: 2px solid var(--accent-highlight);
-  border-radius: var(--radius-lg);
-  padding: var(--space-md) var(--space-lg);
+  border-radius: 18px;
+  padding: 1.1rem 1.35rem;
   text-align: left;
 }
 
 .memory-item__name {
   font-family: var(--font-display);
   font-size: 26px;
-  line-height: 1.1;
+  line-height: 1.05;
 }
 
 .memory-item__meta {
   font-family: var(--font-code);
+  font-size: 14px;
   color: var(--text-secondary);
-  margin-top: 0.15rem;
+  margin-top: 0.25rem;
 }
 
-/* Footer */
+/* Footer: clear button centered under the two columns, then paragraph */
 .archive__footer {
-  margin-top: var(--space-xl);
+  width: min(980px, 100%);
+  margin: 2.5rem auto 0;
+
   display: grid;
   justify-items: center;
-  gap: var(--space-lg);
+  gap: 1.5rem;
 }
 
 .archive__clear {
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 2.25rem;
   border-radius: 999px;
   border: 2px solid var(--mana-red);
   background: transparent;
@@ -1147,30 +1241,145 @@ svg.school__glyph {
 }
 
 .archive__body {
-  max-width: 80ch;
+  max-width: 60ch;
   color: var(--text-secondary);
-}
-
-.archive__body code {
-  font-family: var(--font-code);
-  background: var(--surface-elevated);
-  padding: 0.12em 0.35em;
-  border-radius: 8px;
-  border: 1px solid var(--surface-border);
 }
 
 /* Mobile */
 @media (max-width: 950px) {
   .archive__grid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 
   .memory {
-    min-height: auto;
+    min-height: 280px;
   }
 }
 
+/* ============================
+   ARCHIVE: make it fill screen
+   ============================ */
 
+/* Let this section breathe wider than the default .container (72rem) */
+#local-storage .container {
+  width: min(90rem, 100%);     /* wider than your global container */
+  padding-inline: clamp(1rem, 3vw, 2.5rem);
+}
+
+/* Make the two columns use more of the available width */
+.archive__grid {
+  width: 100%;                /* remove the “boxed” max-width */
+  max-width: none;
+  margin: 0 auto;
+
+  grid-template-columns: minmax(520px, 1fr) minmax(520px, 1fr);
+  gap: clamp(2.5rem, 5vw, 5.5rem);
+}
+.deck,
+.memory,
+.archive__code {
+  width: min(640px, 100%);
+}
+.memory {
+  min-height: 420px; /* was 360-ish */
+  padding: 1.75rem;
+  border-radius: 26px;
+}
+#local-storage.section {
+  padding: calc(var(--space-xl) * 1.25) 0;
+}
+/* =========================
+   ARCHIVE footer = right column (Figma)
+   ========================= */
+
+.archive__footer {
+  width: 100%;
+  margin-top: clamp(2rem, 4vw, 3rem);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;          /* left = deck, right = memory */
+  gap: clamp(2.5rem, 5vw, 5.5rem);
+  align-items: start;
+}
+
+/* Push the Clear button + paragraph into the RIGHT column */
+.archive__clear,
+.archive__body {
+  grid-column: 2;
+  justify-self: center;
+}
+
+/* Button position like Figma: right column, centered */
+.archive__clear {
+  margin-top: 0.25rem;
+}
+
+/* Paragraph styling to match Figma */
+.archive__body {
+  margin: 0;
+  width: min(60ch, 100%);                  /* narrower, like Figma */
+  text-align: center;
+
+  font-family: var(--font-body);           /* EB Garamond */
+  font-size: 16px;                         /* smaller than your global 18 */
+  line-height: 1.75;                       /* airier */
+  color: rgba(27, 26, 31, 0.65);           /* softer ink */
+}
+
+/* Make “localStorage” feel slightly emphasized like Figma */
+.archive__body code {
+  font-family: var(--font-code);
+  font-size: 0.95em;
+  padding: 0.08em 0.32em;
+  border-radius: 10px;
+  background: rgba(243, 233, 210, 0.55);
+  border: 1px solid rgba(27, 26, 31, 0.10);
+}
+
+/* Mobile: footer becomes single column, centered */
+@media (max-width: 950px) {
+  .archive__footer {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .archive__clear,
+  .archive__body {
+    grid-column: 1;
+  }
+
+  .archive__body {
+    width: min(62ch, 100%);
+  }
+}
+.archive__footer {
+  margin-top: 1.5rem;  /* pulls it up */
+}
+.archive__body {
+  margin-top: 0.75rem;
+}
+/* Footer should stack under the Memory panel */
+.archive__col--memory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Space between Memory panel and the footer */
+.archive__footer {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Paragraph sizing like Figma (narrow + centered) */
+.archive__body {
+  width: min(60ch, 100%);
+  text-align: center;
+}
 /* =========================================================
    13) CLOSING — RESET THE FIELD
    ========================================================= */

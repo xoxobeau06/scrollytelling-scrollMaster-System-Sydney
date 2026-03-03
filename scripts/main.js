@@ -410,4 +410,69 @@ if (chooseBtn) {
       setSelected(wizardCard);
     }
   });
+} 
+const PATH_STORAGE_KEY = "selectedPath";
+function setSelected(card) {
+  if (!wizardCard || !sorcererCard) return;
+
+  wizardCard.classList.remove("is-selected");
+  sorcererCard.classList.remove("is-selected");
+
+  card.classList.add("is-selected");
+
+  const chosen =
+    card.classList.contains("fork-card--wizard") ? "wizard" : "sorcerer";
+
+  // Save to localStorage
+  localStorage.setItem(PATH_STORAGE_KEY, chosen);
+
+  // Optional: update button label
+  if (chooseBtn) {
+    chooseBtn.textContent =
+      chosen === "wizard" ? "Chosen: Wizard" : "Chosen: Sorcerer";
+  }
+
+  // Optional tiny GSAP pop
+  if (window.gsap) {
+    gsap.fromTo(
+      card,
+      { scale: 0.98 },
+      { scale: 1, duration: 0.25, ease: "power2.out" }
+    );
+  }
+}
+// Restore saved path on load
+const savedPath = localStorage.getItem(PATH_STORAGE_KEY);
+
+if (savedPath === "wizard" && wizardCard) {
+  setSelected(wizardCard);
+}
+
+if (savedPath === "sorcerer" && sorcererCard) {
+  setSelected(sorcererCard);
+}
+memoryList.classList.remove("is-empty");
+
+function renderMemory() {
+  if (!memoryList) return;
+
+  const items = loadMemory();
+  memoryList.innerHTML = "";
+  memoryList.classList.remove("is-empty");
+
+  if (items.length === 0) {
+    memoryList.classList.add("is-empty");
+    memoryList.innerHTML = `<p class="memory__empty">Nothing saved yet.</p>`;
+    return;
+  }
+
+  items.forEach((name) => {
+    const el = document.createElement("div");
+    el.className = "memory-item";
+    el.innerHTML = `
+      <div class="memory-item__name">${name}</div>
+      <div class="memory-item__meta">Saved in archive</div>
+    `;
+    memoryList.appendChild(el);
+  });
 }
