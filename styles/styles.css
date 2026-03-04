@@ -174,9 +174,10 @@ a:focus-visible {
   right: var(--space-lg);
   z-index: 1000;
 
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  min-width: 88px;
+  height: 48px;
+  padding: 0 1rem;
+  border-radius: 999px;
 
   background: var(--surface-elevated);
   border: 2px solid var(--surface-border);
@@ -185,7 +186,8 @@ a:focus-visible {
   place-items: center;
   cursor: pointer;
 
-  font-size: 24px;
+  font-family: var(--font-body);
+  font-size: var(--size-body-sm);
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -204,11 +206,12 @@ a:focus-visible {
 /* Mobile: smaller and adjusted position */
 @media (max-width: 720px) {
   #themeToggle {
-    width: 48px;
-    height: 48px;
+    min-width: 78px;
+    height: 44px;
+    padding: 0 0.85rem;
     top: var(--space-md);
     right: var(--space-md);
-    font-size: 20px;
+    font-size: 14px;
   }
 }
 
@@ -320,6 +323,7 @@ a:focus-visible {
   text-align: center;
 
   background-image: url("../assets/images/mana.jpeg");
+  
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -329,22 +333,29 @@ a:focus-visible {
 .hero__overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
 
-  background:
-    linear-gradient(
-      to right,
-      rgba(243, 233, 210, 0.85),
-      rgba(123, 198, 198, 0.25)
-    );
+  background: rgba(243, 233, 210, 0.8);
 
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
   pointer-events: none;
+}
+
+.hero__scroll-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--surface-background);
+  pointer-events: none;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  will-change: transform;
 }
 
 /* Content wrapper */
 .hero__content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   max-width: 900px;
   padding: var(--space-xl);
 }
@@ -393,12 +404,7 @@ a:focus-visible {
 
 /* Dark mode adjustment */
 [data-theme="dark"] .hero__overlay {
-  background:
-    linear-gradient(
-      to right,
-      rgba(14, 13, 18, 0.8),
-      rgba(36, 35, 42, 0.7)
-    );
+  background: rgba(14, 13, 18, 0.78);
 }
 
 
@@ -1073,12 +1079,7 @@ svg.school__glyph {
 
 /* Center the whole two-column region like Figma */
 .archive__grid {
-  width: min(980px, 100%);
-  margin: 0 auto;
-
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
   align-items: start;
 }
 
@@ -1093,7 +1094,6 @@ svg.school__glyph {
 
 /* Left column list should feel “card list” and not stretch too wide */
 .deck {
-  width: min(520px, 100%);
   margin: 0 auto;
 
   display: grid;
@@ -1144,6 +1144,12 @@ svg.school__glyph {
   opacity: 0.7;
 }
 
+.scroll-card__icon img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
 /* Code snippet under deck: NO hard border, just a soft panel like Figma */
 .archive__code {
   width: min(520px, 100%);
@@ -1164,13 +1170,7 @@ svg.school__glyph {
 
 /* Memory panel: the big soft box on the right */
 .memory {
-  width: min(520px, 100%);
-  margin: 0 auto;
-
   background: rgba(214, 179, 106, 0.22); /* warm tint like Figma */
-  border-radius: 22px;
-  padding: 1.5rem;
-  min-height: 360px;
 }
 
 .memory__list {
@@ -1214,14 +1214,52 @@ svg.school__glyph {
   margin-top: 0.25rem;
 }
 
-/* Footer: clear button centered under the two columns, then paragraph */
-.archive__footer {
-  width: min(980px, 100%);
-  margin: 2.5rem auto 0;
+/* ============================
+   ARCHIVE layout + footer
+   ============================ */
 
-  display: grid;
-  justify-items: center;
-  gap: 1.5rem;
+#local-storage .container {
+  width: min(90rem, 100%);
+  padding-inline: clamp(1rem, 3vw, 2.5rem);
+}
+
+#local-storage.section {
+  padding: calc(var(--space-xl) * 1.25) 0;
+}
+
+.archive__grid {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  grid-template-columns: minmax(520px, 1fr) minmax(520px, 1fr);
+  gap: clamp(2.5rem, 5vw, 5.5rem);
+}
+
+.deck,
+.memory,
+.archive__code {
+  width: min(640px, 100%);
+}
+
+.memory {
+  margin: 0 auto;
+  min-height: 420px;
+  padding: 1.75rem;
+  border-radius: 26px;
+}
+
+.archive__col--memory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.archive__footer {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .archive__clear {
@@ -1241,11 +1279,24 @@ svg.school__glyph {
 }
 
 .archive__body {
-  max-width: 60ch;
-  color: var(--text-secondary);
+  margin-top: 0.75rem;
+  width: min(60ch, 100%);
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(27, 26, 31, 0.65);
 }
 
-/* Mobile */
+.archive__body code {
+  font-family: var(--font-code);
+  font-size: 0.95em;
+  padding: 0.08em 0.32em;
+  border-radius: 10px;
+  background: rgba(243, 233, 210, 0.55);
+  border: 1px solid rgba(27, 26, 31, 0.1);
+}
+
 @media (max-width: 950px) {
   .archive__grid {
     grid-template-columns: 1fr;
@@ -1255,130 +1306,10 @@ svg.school__glyph {
   .memory {
     min-height: 280px;
   }
-}
-
-/* ============================
-   ARCHIVE: make it fill screen
-   ============================ */
-
-/* Let this section breathe wider than the default .container (72rem) */
-#local-storage .container {
-  width: min(90rem, 100%);     /* wider than your global container */
-  padding-inline: clamp(1rem, 3vw, 2.5rem);
-}
-
-/* Make the two columns use more of the available width */
-.archive__grid {
-  width: 100%;                /* remove the “boxed” max-width */
-  max-width: none;
-  margin: 0 auto;
-
-  grid-template-columns: minmax(520px, 1fr) minmax(520px, 1fr);
-  gap: clamp(2.5rem, 5vw, 5.5rem);
-}
-.deck,
-.memory,
-.archive__code {
-  width: min(640px, 100%);
-}
-.memory {
-  min-height: 420px; /* was 360-ish */
-  padding: 1.75rem;
-  border-radius: 26px;
-}
-#local-storage.section {
-  padding: calc(var(--space-xl) * 1.25) 0;
-}
-/* =========================
-   ARCHIVE footer = right column (Figma)
-   ========================= */
-
-.archive__footer {
-  width: 100%;
-  margin-top: clamp(2rem, 4vw, 3rem);
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;          /* left = deck, right = memory */
-  gap: clamp(2.5rem, 5vw, 5.5rem);
-  align-items: start;
-}
-
-/* Push the Clear button + paragraph into the RIGHT column */
-.archive__clear,
-.archive__body {
-  grid-column: 2;
-  justify-self: center;
-}
-
-/* Button position like Figma: right column, centered */
-.archive__clear {
-  margin-top: 0.25rem;
-}
-
-/* Paragraph styling to match Figma */
-.archive__body {
-  margin: 0;
-  width: min(60ch, 100%);                  /* narrower, like Figma */
-  text-align: center;
-
-  font-family: var(--font-body);           /* EB Garamond */
-  font-size: 16px;                         /* smaller than your global 18 */
-  line-height: 1.75;                       /* airier */
-  color: rgba(27, 26, 31, 0.65);           /* softer ink */
-}
-
-/* Make “localStorage” feel slightly emphasized like Figma */
-.archive__body code {
-  font-family: var(--font-code);
-  font-size: 0.95em;
-  padding: 0.08em 0.32em;
-  border-radius: 10px;
-  background: rgba(243, 233, 210, 0.55);
-  border: 1px solid rgba(27, 26, 31, 0.10);
-}
-
-/* Mobile: footer becomes single column, centered */
-@media (max-width: 950px) {
-  .archive__footer {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
-
-  .archive__clear,
-  .archive__body {
-    grid-column: 1;
-  }
 
   .archive__body {
     width: min(62ch, 100%);
   }
-}
-.archive__footer {
-  margin-top: 1.5rem;  /* pulls it up */
-}
-.archive__body {
-  margin-top: 0.75rem;
-}
-/* Footer should stack under the Memory panel */
-.archive__col--memory {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Space between Memory panel and the footer */
-.archive__footer {
-  margin-top: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Paragraph sizing like Figma (narrow + centered) */
-.archive__body {
-  width: min(60ch, 100%);
-  text-align: center;
 }
 /* =========================================================
    13) CLOSING — RESET THE FIELD
@@ -1477,4 +1408,42 @@ svg.school__glyph {
   .closing__panel {
     padding: var(--space-lg);
   }
+}
+.flow {
+  will-change: transform, opacity;
+}
+.reset-btn{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1.25rem;
+  z-index: 999;
+
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 999px;
+
+  font-family: var(--font-body);
+  font-size: var(--size-body-md);
+
+  border: 2px solid var(--accent-highlight);
+  background: transparent;
+  color: var(--accent-highlight);
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+  background: var(--accent-highlight);
+  color: var(--text-inverse);
+}
+
+.reset-btn:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+.reset-btn[hidden]{
+  display: none;
 }

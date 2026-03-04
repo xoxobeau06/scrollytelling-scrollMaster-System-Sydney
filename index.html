@@ -21,7 +21,7 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <button id="themeToggle" type="button" aria-label="Toggle theme">🌙</button>
+    <button id="themeToggle" type="button" aria-label="Toggle theme">Dawn</button>
 
     <main id="main">
       <!-- =========================
@@ -29,8 +29,9 @@
            ========================= -->
       <section class="section section--hero" id="hero">
         <div class="hero__overlay"></div>
+        <div class="hero__scroll-fade" aria-hidden="true"></div>
 
-        <div class="hero__content">
+        <div class="hero__content flow">
           <h1 class="hero__title">
             SCROLL.MASTER<br />
             <span class="hero__subtitle">System</span>
@@ -51,15 +52,15 @@
       <section class="section section--chapter" id="first-spell">
         <div class="container first-spell">
           <div class="first-spell__left">
-            <div class="panel panel--story">
+            <div class="panel panel--story flow">
               <h2 class="chapter-title">The First Spell</h2>
 
               <p>
                 Every Scroll Master starts with a simple spell. For me, it was
-                <a class="inline-link" href="#">console.log()</a>. It didn’t change
-                the world. It just revealed it. Seeing my values printed out in
-                the console was the first moment the system felt visible instead
-                of mysterious.
+               console.log It didn’t
+                change the world. It just revealed it. Seeing my values printed
+                out in the console was the first moment the system felt visible
+                instead of mysterious.
               </p>
 
               <p>
@@ -68,14 +69,14 @@
               </p>
             </div>
 
-            <div class="panel panel--code">
+            <div class="panel panel--code flow">
               <pre class="codeblock"><code>console.log("The scroll opens.");
 
 → The scroll opens</code></pre>
             </div>
           </div>
 
-          <div class="first-spell__right">
+          <div class="first-spell__right flow">
             <img
               class="spell-card"
               src="assets/images/ChatGPT Image Feb 27, 2026, 10_02_45 PM.png"
@@ -90,7 +91,7 @@
            ========================= -->
       <section class="section section--chapter section--alt" id="naming-the-deck">
         <div class="container grimoire">
-          <header class="grimoire__header">
+          <header class="grimoire__header flow">
             <h2 class="grimoire__title">Naming Your Grimoire</h2>
             <p class="grimoire__subtitle">
               A Sigil Without Intention Holds No Power
@@ -98,54 +99,60 @@
           </header>
 
           <div class="grimoire__books">
+            <!-- Mutable / let -->
+            <figure class="book flow">
+              <img
+                class="book__img"
+                src="assets/svg/book.svg"
+                alt="Open book for let example"
+              />
 
-  <!-- Mutable / let -->
-  <figure class="book">
-    <img class="book__img" src="assets/svg/book.svg" alt="Open book for let example" />
+              <div class="book__content">
+                <div class="book__text">
+                  <p>
+                    Mutable Sigil enters the Archive without a bound value. When
+                    you inscribe a value, it becomes that value. You may
+                    inscribe a new value at any time.
+                  </p>
+                </div>
 
-    <div class="book__content">
-      <div class="book__text">
-        <p>
-          Mutable Sigil enters the Archive without a bound value.
-          When you inscribe a value, it becomes that value.
-          You may inscribe a new value at any time.
-        </p>
-      </div>
-
-      <pre class="book__code"><code>
+                <pre class="book__code"><code>
 let sigilName;
 
 sigilName = "Tide Invocation";
 
 sigilName = "Bloom Ascendant";
       </code></pre>
-    </div>
-  </figure>
+              </div>
+            </figure>
 
-  <!-- Const / bound -->
-  <figure class="book">
-    <img class="book__img" src="assets/svg/book.svg" alt="Open book for const example" />
+            <!-- Const / bound -->
+            <figure class="book flow">
+              <img
+                class="book__img"
+                src="assets/svg/book.svg"
+                alt="Open book for const example"
+              />
 
-    <div class="book__content">
-      <div class="book__text">
-        <p>
-          Bound Sigil must be inscribed with a value.
-          Once bound, its value cannot change.
-        </p>
-      </div>
+              <div class="book__content">
+                <div class="book__text">
+                  <p>
+                    Bound Sigil must be inscribed with a value. Once bound, its
+                    value cannot change.
+                  </p>
+                </div>
 
-      <pre class="book__code"><code>
+                <pre class="book__code"><code>
 const masterSigil = "Light of Structure";
 
 // masterSigil = "Ember of Change";
 // Not allowed
       </code></pre>
-    </div>
-  </figure>
+              </div>
+            </figure>
+          </div>
 
-</div>
-
-          <p class="grimoire__body">
+          <p class="grimoire__body flow">
             A spell without a name is chaos. When I learned <code>let</code> and
             <code>const</code>, I realized naming wasn’t cosmetic — it was
             structure. Some values are meant to shift and evolve. Others are
@@ -162,7 +169,7 @@ const masterSigil = "Light of Structure";
            ========================= -->
       <section class="section section--chapter" id="the-switch">
         <div class="container fork">
-          <header class="fork__header">
+          <header class="fork__header flow">
             <h2 class="fork__title">The Forked Path</h2>
 
             <p class="fork__lede">
@@ -172,12 +179,14 @@ const masterSigil = "Light of Structure";
               spell takes when invoked.
             </p>
 
+            <!-- keep button NOT flow so it doesn’t fade out mid-click -->
             <button class="fork__cta" id="choosePathBtn" type="button">
-  Choose Path
-</button>
+              Choose Path
+            </button>
           </header>
 
-          <div class="fork__grid">
+          <!-- Cards: you can choose flow or not; I’m setting flow on the grid so it reveals as a unit -->
+          <div class="fork__grid flow">
             <!-- WIZARD -->
             <article class="fork-card fork-card--wizard">
               <h3 class="fork-card__title">Wizard</h3>
@@ -215,7 +224,7 @@ if (emotion === "focused") {
             </article>
           </div>
 
-          <p class="fork__footer">
+          <p class="fork__footer flow">
             This is when the system stopped being static. An if statement felt
             like setting rules for how the world responds. If this is true, do
             this. Else, do something else. It sounds simple. But it was the
@@ -230,7 +239,7 @@ if (emotion === "focused") {
            ========================= -->
       <section class="section section--chapter section--alt" id="reacting">
         <div class="container energy">
-          <header class="energy__header">
+          <header class="energy__header flow">
             <h2 class="energy__title">Channeling Energy</h2>
 
             <p class="energy__lede">
@@ -243,12 +252,13 @@ if (emotion === "focused") {
           </header>
 
           <div class="energy__panel">
-            <div class="energy__left">
+            <div class="energy__left flow">
               <p class="energy__prompt">
                 <strong>Try it!</strong><br />
                 Click the card to tap it!
               </p>
 
+              <!-- keep button NOT flow so it won’t fade while interacting -->
               <button
                 class="tap-card"
                 id="tapCard"
@@ -262,7 +272,7 @@ if (emotion === "focused") {
               </button>
             </div>
 
-            <div class="energy__right">
+            <div class="energy__right flow">
               <div class="energy__codeWrap">
                 <pre class="energy__code"><code>// Event listener metaphor
 
@@ -271,9 +281,10 @@ card.addEventListener("click", () => {
 });
 
 // Current state: <span id="tapState">untapped</span>
-
+<span id="tapAfterBlock" hidden>
 // After click
-// Current state: tapped</code></pre>
+// Current state: <span id="tapNextState">tapped</span>
+</span></code></pre>
               </div>
 
               <p class="energy__body">
@@ -293,7 +304,7 @@ card.addEventListener("click", () => {
            ========================= -->
       <section class="section section--chapter" id="the-system">
         <div class="container schools">
-          <header class="schools__header">
+          <header class="schools__header flow">
             <h2 class="schools__title">The Five Schools</h2>
 
             <div class="schools__poem">
@@ -312,14 +323,10 @@ card.addEventListener("click", () => {
               defined variables instead, I wasn’t just styling. I was creating a
               language. And language makes systems scalable.
             </p>
-
-            <!-- ANIMATION TARGET (optional):
-                 You can animate the title/poem/body on scroll-in with GSAP.
-                 Example targets: .schools__title, .schools__poem p, .schools__body -->
-            <!-- PUT GSAP SCROLL ENTRANCE FOR HEADER TEXT IN main.js (ScrollTrigger) -->
           </header>
 
-          <div class="schools__grid" aria-label="The five schools">
+          <!-- Grid reveal as a unit -->
+          <div class="schools__grid flow" aria-label="The five schools">
             <!-- WHITE — Structure -->
             <figure class="school school--white">
               <div class="school__icon" aria-hidden="true">
@@ -438,90 +445,98 @@ card.addEventListener("click", () => {
         </div>
       </section>
 
-     <!-- =========================
-     CHAPTER 6
-     ========================= -->
-<section class="section section--chapter section--alt" id="local-storage">
-  <div class="container archive">
-    <header class="archive__header">
-      <h2 class="archive__title">The Archive Remembers</h2>
-    </header>
+      <!-- =========================
+           CHAPTER 6
+           ========================= -->
+      <section class="section section--chapter section--alt" id="local-storage">
+        <div class="container archive">
+          <header class="archive__header flow">
+            <h2 class="archive__title">The Archive Remembers</h2>
+          </header>
 
-    <div class="archive__grid">
-      <!-- LEFT: YOUR DECK -->
-      <section class="archive__col">
-        <h3 class="archive__colTitle">Your Deck</h3>
+          <div class="archive__grid">
+            <!-- LEFT: YOUR DECK -->
+            <section class="archive__col flow">
+              <h3 class="archive__colTitle">Your Deck</h3>
 
-        <div class="deck" aria-label="Your deck">
-          <button class="scroll-card" type="button" data-scroll="Revelation">
-            <span class="scroll-card__text">
-              <span class="scroll-card__name">Revelation</span>
-              <span class="scroll-card__meta">Scroll I</span>
-            </span>
-            <span class="scroll-card__icon" aria-hidden="true">💾</span>
-          </button>
+              <div class="deck" aria-label="Your deck">
+                <button class="scroll-card" type="button" data-scroll="Revelation">
+                  <span class="scroll-card__text">
+                    <span class="scroll-card__name">Revelation</span>
+                    <span class="scroll-card__meta">Scroll I</span>
+                  </span>
+                  <span class="scroll-card__icon" aria-hidden="true">
+                    <img src="assets/svg/floppy-disk.svg" alt="" />
+                  </span>
+                </button>
 
-          <button class="scroll-card" type="button" data-scroll="Ward">
-            <span class="scroll-card__text">
-              <span class="scroll-card__name">Ward</span>
-              <span class="scroll-card__meta">Scroll II</span>
-            </span>
-            <span class="scroll-card__icon" aria-hidden="true">💾</span>
-          </button>
+                <button class="scroll-card" type="button" data-scroll="Ward">
+                  <span class="scroll-card__text">
+                    <span class="scroll-card__name">Ward</span>
+                    <span class="scroll-card__meta">Scroll II</span>
+                  </span>
+                  <span class="scroll-card__icon" aria-hidden="true">
+                    <img src="assets/svg/floppy-disk.svg" alt="" />
+                  </span>
+                </button>
 
-          <button class="scroll-card" type="button" data-scroll="Transmute">
-            <span class="scroll-card__text">
-              <span class="scroll-card__name">Transmute</span>
-              <span class="scroll-card__meta">Scroll III</span>
-            </span>
-            <span class="scroll-card__icon" aria-hidden="true">💾</span>
-          </button>
+                <button class="scroll-card" type="button" data-scroll="Transmute">
+                  <span class="scroll-card__text">
+                    <span class="scroll-card__name">Transmute</span>
+                    <span class="scroll-card__meta">Scroll III</span>
+                  </span>
+                  <span class="scroll-card__icon" aria-hidden="true">
+                    <img src="assets/svg/floppy-disk.svg" alt="" />
+                  </span>
+                </button>
 
-          <button class="scroll-card" type="button" data-scroll="Binding">
-            <span class="scroll-card__text">
-              <span class="scroll-card__name">Binding</span>
-              <span class="scroll-card__meta">Scroll IV</span>
-            </span>
-            <span class="scroll-card__icon" aria-hidden="true">💾</span>
-          </button>
-        </div>
+                <button class="scroll-card" type="button" data-scroll="Binding">
+                  <span class="scroll-card__text">
+                    <span class="scroll-card__name">Binding</span>
+                    <span class="scroll-card__meta">Scroll IV</span>
+                  </span>
+                  <span class="scroll-card__icon" aria-hidden="true">
+                    <img src="assets/svg/floppy-disk.svg" alt="" />
+                  </span>
+                </button>
+              </div>
 
-        <pre class="archive__code"><code>// Preserve in Archive
+              <pre class="archive__code"><code>// Preserve in Archive
 localStorage.setItem(
   "archive",
   JSON.stringify(scrolls)
 );</code></pre>
-      </section>
+            </section>
 
-      <!-- RIGHT: YOUR MEMORY -->
-      <section class="archive__col archive__col--memory">
-        <h3 class="archive__colTitle">Your Memory</h3>
+            <!-- RIGHT: YOUR MEMORY -->
+            <section class="archive__col archive__col--memory">
+              <h3 class="archive__colTitle flow">Your Memory</h3>
 
-        <div class="memory">
-          <div class="memory__list" id="memoryList" aria-label="Saved scrolls">
-            <!-- JS will populate -->
+              <div class="memory">
+                <div class="memory__list" id="memoryList" aria-label="Saved scrolls">
+                  <!-- JS will populate -->
+                </div>
+              </div>
+
+              <!-- footer under memory box -->
+              <div class="archive__footer flow">
+                <button class="archive__clear" id="clearMemory" type="button">
+                  Clear
+                </button>
+
+                <p class="archive__body">
+                  At first, every refresh wiped the slate clean. That felt
+                  temporary, like nothing really stuck. Then I learned about
+                  <code>localStorage</code>. Suddenly the system could remember—theme
+                  choices, preferences, state. It felt less like casting a temporary
+                  spell and more like writing something permanent into the archive.
+                  That changed how I saw what a website could be.
+                </p>
+              </div>
+            </section>
           </div>
         </div>
-
-        <!-- MOVED: footer now lives under the memory box -->
-        <div class="archive__footer">
-          <button class="archive__clear" id="clearMemory" type="button">
-            Clear
-          </button>
-
-          <p class="archive__body">
-            At first, every refresh wiped the slate clean. That felt temporary,
-            like nothing really stuck. Then I learned about
-            <code>localStorage</code>. Suddenly the system could remember—theme
-            choices, preferences, state. It felt less like casting a temporary
-            spell and more like writing something permanent into the archive.
-            That changed how I saw what a website could be.
-          </p>
-        </div>
       </section>
-    </div>
-  </div>
-</section>
 
       <!-- =========================
            CLOSING
@@ -536,7 +551,7 @@ localStorage.setItem(
             <span class="fan-card fan-card--5"></span>
           </div>
 
-          <div class="closing__panel">
+          <div class="closing__panel flow">
             <h2 class="closing__title">Reset the Field</h2>
 
             <div class="closing__text">
@@ -547,12 +562,15 @@ localStorage.setItem(
                 but because I understand the structure behind it.
               </p>
               <p>That’s what Scroll Master became:</p>
-              <p><strong>A way to turn confusion into language.</strong></p>
+              <p>A way to turn confusion into language.</p>
               <p>And language into control.</p>
             </div>
           </div>
         </div>
       </section>
+      <button id="resetField" class="reset-btn" type="button">
+  Reset the Field ↑
+</button>
     </main>
 
     <!-- Scripts -->
