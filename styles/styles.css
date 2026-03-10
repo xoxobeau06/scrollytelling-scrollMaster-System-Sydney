@@ -576,13 +576,19 @@ a:focus-visible {
   font-family: var(--font-body);
   font-size: clamp(0.76rem, 0.96vw, 0.94rem);
   line-height: 1.34;
-  color: var(--text-primary);
+  color: var(--surface-book-ink);
 
   overflow: hidden;
 }
 
 .book__text p {
   margin: 0;
+}
+
+.book__text p,
+.book__code,
+.book__code code {
+  color: var(--surface-book-ink);
 }
 
 .book__code {
@@ -596,7 +602,7 @@ a:focus-visible {
   font-family: var(--font-code);
   font-size: clamp(0.66rem, 0.86vw, 0.82rem);
   line-height: 1.26;
-  color: var(--text-primary);
+  color: var(--surface-book-ink);
 
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -619,6 +625,12 @@ a:focus-visible {
     top: 34.8%;
     height: 36%;
   }
+}
+.grimoire .book__text,
+.grimoire .book__text p,
+.grimoire .book__code,
+.grimoire .book__code code {
+  color: #1b1a1f;
 }
 
 
@@ -1113,6 +1125,7 @@ svg.school__glyph {
 
   background: rgba(243, 233, 210, 0.55); /* parchment-ish */
   border: 2px solid var(--accent-highlight);
+  color: var(--surface-book-ink);
 
   cursor: pointer;
   transition: transform 0.12s ease, opacity 0.2s ease;
@@ -1134,7 +1147,7 @@ svg.school__glyph {
   display: block;
   font-family: var(--font-code);
   font-size: 14px;
-  color: var(--text-secondary);
+  color: var(--neutral-700);
   margin-top: 0.25rem;
 }
 
@@ -1199,6 +1212,7 @@ svg.school__glyph {
   border-radius: 18px;
   padding: 1.1rem 1.35rem;
   text-align: left;
+  color: var(--surface-book-ink);
 }
 
 .memory-item__name {
@@ -1210,7 +1224,7 @@ svg.school__glyph {
 .memory-item__meta {
   font-family: var(--font-code);
   font-size: 14px;
-  color: var(--text-secondary);
+  color: var(--neutral-700);
   margin-top: 0.25rem;
 }
 

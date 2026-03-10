@@ -75,6 +75,9 @@
   --surface-elevated: var(--neutral-300);
   --surface-border: rgba(27, 26, 31, 0.18);
 
+   /* Ink color used on cream book-page artwork */
+   --surface-book-ink: var(--neutral-900);
+
   --text-primary: var(--neutral-900);
   --text-secondary: var(--neutral-700);
   --text-muted: var(--neutral-500);
@@ -104,6 +107,9 @@
   --surface-panel: var(--neutral-900);
   --surface-elevated: var(--neutral-850);
   --surface-border: rgba(243, 233, 210, 0.18);
+
+   /* Book artwork remains cream in dark mode, so keep dark ink for legibility */
+   --surface-book-ink: var(--neutral-900);
 
   --text-primary: var(--neutral-100);
   --text-secondary: rgba(243, 233, 210, 0.82);

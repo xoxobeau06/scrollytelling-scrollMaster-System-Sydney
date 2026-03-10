@@ -658,3 +658,18 @@ if (hasGSAP) {
     }
   });
 }
+if (hasGSAP && hasScrollTrigger && !prefersReducedMotion) {
+  gsap.utils.toArray(".section--chapter").forEach((section) => {
+    gsap.from(section, {
+      opacity: 0,
+      y: 20,
+      duration: 0.7,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  });
+}
